@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'faker'
+
+Item.delete_all
+20.times do 
+  Item.create(title: Faker::Creature::Cat.name, description: Faker::Creature::Cat.breed, price: rand(1..50), image_url: "http://placekitten.com/200/#{rand(200..300)}")
+end
