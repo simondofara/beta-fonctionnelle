@@ -1,0 +1,15 @@
+<div class = "container mt-3">
+  <div class = "row">
+  <% @items.each do |item|%>
+  <div class="card m-3" style="width: 18rem;">
+    <img src="<%= item.image_url %>" class="card-img-top rounded" alt="..."  style = "height: 20rem">
+    <div class="card-body">
+      <h5 class="card-title"><%= item.title%></h5>
+      <p class="card-text"><%= item.description%></p>
+
+      <%= link_to "<span class = 'btn btn-primary'>Voir l'article</span>".html_safe, item_path(item.id) %>
+    </div>
+  </div>
+  <% end %>
+  </div>
+</div>

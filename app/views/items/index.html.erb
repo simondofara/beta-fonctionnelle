@@ -1,12 +1,2 @@
-<div class = "container">
-<% @items.each do |item|%>
-<div class="card" style="width: 18rem;">
-  <img src="<%= item.image_url %>" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title"><%= item.title%></h5>
-    <p class="card-text"><%= item.description%></p>
-    <a href="#" class="btn btn-primary">Voir l'article</a>
-  </div>
-</div>
-<% end %>
-</div>
+<%= render 'items'%>
+
