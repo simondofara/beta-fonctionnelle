@@ -1,2 +1,39 @@
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cat's Eyes</title>
+  </head>
+
+  <body>
+
+    <h1>Cat's Eyes</h1>
+    <h2>Tout ce que dont vous rêvez à propos des chats</h2>
+
+    <ul>
+      <% if user_signed_in? %>
+        <li>
+          <%= link_to "Se déconnecter", destroy_user_session_path, method: :delete %>
+        </li>
+        <li>
+          Voici ton email : <%= current_user.email %>
+        </li>
+        <li>
+          <%= link_to "Edit email / password", edit_user_registration_path %>
+        </li>
+
+
+        <% else %>
+        <li>
+          <%= link_to 'Se connecter', new_user_session_path %>
+        </li>
+        <li>
+          <%= link_to "S'inscrire", new_user_registration_path %>
+        </li>
+      <% end %>
+    </ul>
+
+
+  </body>
+
+</html>
