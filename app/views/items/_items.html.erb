@@ -2,7 +2,7 @@
   <div class = "row" style = "display: flex; flex-direction: row; flex-wrap: wrap;">
     <% @items.each do |item|%>
       <div class="card" style = "height: auto; width: 33%; margin-top:10px;">
-        <img src="<%= item.image_url %>" class="card-img-top" alt="..." style= "width: 18rem; height: 20rem;">
+      <%= image_tag item.cat_image, alt: 'cat', class: "card-img-top", style: "width: 18rem; height: 20rem;"%>
         <div class="card-body">
           <h5 class="card-title"><%= item.title %></h5>
           <p class="card-text"><%= item.description %></p>
