@@ -1,0 +1,25 @@
+<div class= "container ">
+  <div class= "row">
+    <div class= "col col-xs-12 col-sm-6 mb50">
+      <div class = "images">
+        <img src="<%= @item.image_url %>" class="img-responsive" alt="..." >
+      </div>
+    </div>
+    <div class="col col-xs-12 col-sm-6 mb50">
+      <div class="summary entry-summary">
+        <div>
+          <h1><%= @item.title%></h1>
+          <p class = "price">
+            <ins>
+              <span class="amount"><%=@item.price%> €</span>
+            </ins>
+          </p>
+        </div>
+        <div class="lead">
+          <p><%= @item.description%></p>
+          <button class = "btn btn-primary">Ajouter au panier</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
