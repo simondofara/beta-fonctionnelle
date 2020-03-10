@@ -1,21 +1,12 @@
 Rails.application.routes.draw do
 
-  get 'orders/index'
-  get 'orders/show'
-  get 'orders/new'
-
-  get 'carts/show'
-
-  get 'items/index'
-  get 'items/new'
-  get 'items/edit'
-
-  devise_for :users
-
-  root "items#index"
-
+  resources :item_carts
+  resources :carts
   resources :items
-  resources :users
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
+  root 'items#index'
 
   get 'carts/:id' => "carts#show", as: "cart"
   delete 'carts/:id' => "carts#destroy"
@@ -27,7 +18,7 @@ Rails.application.routes.draw do
   delete 'item_carts/:id' => "item_carts#destroy"
 
 
-  resources :items
+
   resources :orders
 
 

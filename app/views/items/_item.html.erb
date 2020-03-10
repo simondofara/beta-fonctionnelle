@@ -2,7 +2,8 @@
   <div class= "row">
     <div class= "col col-xs-12 col-sm-6 mb50">
       <div class = "images">
-        <img src="<%= @item.image_url %>" class="img-responsive" alt="..." >
+      <%= image_tag @item.cat_image, alt: 'cat', class: "img-responsive"%>
+        
       </div>
     </div>
     <div class="col col-xs-12 col-sm-6 mb50">
@@ -17,7 +18,7 @@
         </div>
         <div class="lead">
           <p><%= @item.description%></p>
-          <button class = "btn btn-primary">Ajouter au panier</button>
+          <%= button_to 'Ajouter au panier', item_carts_path(item_id: @item), class: 'btn btn-primary' %>
         </div>
       </div>
     </div>
