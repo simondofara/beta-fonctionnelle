@@ -2,7 +2,8 @@
   <div class= "row">
     <div class= "col col-xs-12 col-sm-6 mb50">
       <div class = "images">
-        <img src="<%= @item.image_url %>" class="img-responsive" alt="..." >
+      <%= image_tag @item.cat_image, alt: 'cat', class: "img-responsive"%>
+        
       </div>
     </div>
     <div class="col col-xs-12 col-sm-6 mb50">
