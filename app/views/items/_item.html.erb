@@ -1,15 +1,18 @@
 <div class= "container ">
-  <div class= "row">
-  <div class="card col col-12 mt-4">
-           <%= image_tag @item.cat_image, alt: 'cat', class: "card-img-top img-fluid"%>
-          <div class="card-body">
-            <h3 class="card-title"><%= @item.title%></h3>
-            <h4><%=@item.price%> $</h4>
-            <p class="card-text"><%= @item.description%></p>
-            <%= button_to 'Ajouter au panier', item_carts_path(item_id: @item), class: 'btn btn-success' %>
-          </div>
+<div class = "row">
+  <div class = "col col-8">
+   <%= image_tag @item.cat_image, alt: 'cat', class: "card-img-top img-fluid"%>
   </div>
-
+    <div class = "col col-4">
+      <h3><%= @item.title%></h3>
+      <p><%= @item.description%></p>
+      <h4><%=@item.price%> $</h4>
+      <%= button_to 'Ajouter au panier', item_carts_path(item_id: @item), class: 'btn btn-success' %>
+    </div>
+  </div>
+  <hr>
+</div>
+  
 
     
      
