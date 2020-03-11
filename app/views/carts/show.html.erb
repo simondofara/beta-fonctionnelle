@@ -1,36 +1,20 @@
 <div class = "container">
 <h1>Panier</h1>
-<div class = "row">
-  <%@cart.items.each do |cart_item|%>
-    <div class = "border text-center mb-3 mr-3" style = "width: 10rem;">
-    <%= image_tag cart_item.cat_image, alt: 'cat', class: "card-img-top", style: "width: 8rem; height: 9rem;"%>
-    <%= cart_item.title%>
-  </div>
 
-  <% end %>
-  </div>
-
-<div class="keep-shopping pv1 mt4 has-text-right">
- <%= link_to 'Retourner aux produits', items_path, class: 'button is-warning' %>
-</div>
-<hr />
 <section class="section">
-  <%= render(@cart.item_carts) %>
-
- <div class="columns">
-   <div class="column total has-text-right">
+  <%= render 'item_carts/item_cart'%>
+ <div class="column total has-text-right">
      <h4 class="title is-4">
        <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
      </h4>
    </div>
-   <div>
-   <%= link_to "Proceed to checkout", new_order_path, method: :get, class: "btn btn-success" %><br>
-   </div>
-   <br>
-
+ <div class="columns">
    <div class="column">
      <%= button_to 'Vider le panier', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-secondary" %>
    </div>
  </div>
 </section>
+<div class="keep-shopping pv1 mt4 has-text-right">
+ <%= link_to 'Retourner aux produits', items_path, class: 'button is-warning' %>
+</div>
 </div>
