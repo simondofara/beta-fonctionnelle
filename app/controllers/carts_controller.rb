@@ -1,93 +1,79 @@
 class CartsController < ApplicationController
-  skip_before_action :verify_authenticity_token, :only => [:update]
 
-  def show
-    @cart = current_user_cart
-    @items = all_items
-    @items_price = only_price_array
-    @quantity_array = cart_quantity_item_array
+  rescue_from ActiveRecord::RecordNotFound, with: :invalid_cart
+  before_action :set_cart, only: [:show, :edit, :update, :destroy]
+
+
+  def index
+    @carts = Cart.all
   end
 
-  def update
-    @cart = current_user_cart
-    @item = current_item
-    @select = selected_item_in_cart
 
-    item = JoinCartItem.find_by(cart_id: @cart.id, item_id: @item.id)
+  def show
+  end
 
-    if item
-      item.quantity = ((item.quantity) + 1)
-      item.save
-      flash[:succes] = "Ajouté au panier"
-        respond_to do |format|
-          format.html { redirect_to root_path }
-          format.js { }
-        end
-    else
-      JoinCartItem.create(cart_id: @cart.id, item_id: @item.id, quantity: 1)
-      flash[:succes] = "Ajouté au panier"
-        respond_to do |format|
-          format.html { redirect_to root_path }
-          format.js { }
-        end
+
+  def new
+    @cart = Cart.new
+  end
+
+
+  def edit
+  end
+
+
+  def create
+    @cart = Cart.new(cart_params)
+
+    respond_to do |format|
+      if @cart.save
+        format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
+        format.json { render :show, status: :created, location: @cart }
+      else
+        format.html { render :new }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def appel(arg)
-    return JoinCartItem.find_by(cart_id: current_or_guest_user.id, item_id: arg.id)
+  # PATCH/PUT /carts/1
+  # PATCH/PUT /carts/1.json
+  def update
+    respond_to do |format|
+      if @cart.update(cart_params)
+        format.html { redirect_to @cart, notice: 'Cart was successfully updated.' }
+        format.json { render :show, status: :ok, location: @cart }
+      else
+        format.html { render :edit }
+        format.json { render json: @cart.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
+  # DELETE /carts/1
+  # DELETE /carts/1.json
   def destroy
-    JoinCartItem.delete(selected_item_in_cart)
-
-    redirect_to cart_path(Cart.find_by(user_id: current_or_guest_user.id).id)
+    @cart.destroy if @cart.id == session[:cart_id]
+    session[:cart_id] = nil
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Cart was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
-  ##########################
-  #METHODES POUR UPDATE
-
-  def current_user_cart
-    Cart.find_by(user_id: current_or_guest_user.id)
-  end
-
-  def current_item
-    Item.find(params[:id])
-  end
-
-  ##########################
-  #METHODES POUR SHOW
-
-  def only_price_array
-    items = all_items
-    quantities = cart_quantity_item_array
-
-    items_price = []
-    items.each_with_index do |item_price, index|
-      items_price << (item_price.price) * quantities[index]
+    # Use callbacks to share common setup or constraints between actions.
+    def set_cart
+      @cart = Cart.find(params[:id])
     end
 
-    return items_price
-  end
-
-  def cart_quantity_item_array
-    cu = Cart.find_by(user_id: current_or_guest_user.id)
-    join_cart = JoinCartItem.where(cart_id: cu.id)
-
-    @quantity_array = []
-
-    join_cart.each do |join|
-      @quantity_array << join.quantity
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def cart_params
+      params.fetch(:cart, {})
     end
 
-    return @quantity_array
-  end
-
-  #########################
-  #METHODE DELETE
-  def selected_item_in_cart
-    cu = Cart.find_by(user_id: current_or_guest_user.id)
-    return JoinCartItem.find_by(cart_id: cu.id, item_id: params[:id])
-  end
-
+    def invalid_cart
+      logger.error "Attempt to access invalid cart #{params[:id]}"
+      redirect_to root_path, notice: "That cart doesn't exist"
+    end
 end

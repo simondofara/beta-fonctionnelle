@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
 
-  root "items#index"
-
-  resources :items, only: [:index, :show], path: :image
-
-  devise_for :users
-
+  resources :item_carts
   resources :carts
-
+  resources :items
+  devise_for :users, controllers: {
+    registrations: 'registrations'
+  }
   resources :users
-  resources :orders
+  root 'items#index'
+
+
+
 
 end

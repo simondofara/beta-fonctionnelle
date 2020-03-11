@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!, only: [:show]
 
   def show
-    @user = User.find(current_user.id)
+    @user = User.find(params[:id])
   end
 
   def new
@@ -15,6 +15,7 @@ class UsersController < ApplicationController
       log_in(@user)
     else
       render new_user_path
+    end
   end
 
   def edit
