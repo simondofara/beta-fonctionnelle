@@ -6,8 +6,8 @@
 
 
     <% @items.each do |item|%>
-      <div class="card" style = "height: auto; width: 33%; margin-top:10px;">
-      <%= image_tag item.cat_image, alt: 'cat', class: "card-img-top", style: "width: 18rem; height: 20rem;"%>
+      <div class="card h-100" style = "height: auto; width: 33%; margin-top:10px;">
+      <%= image_tag item.cat_image, alt: 'cat', class: "card-img-top", style: "width: auto; height: 20rem;"%>
         <div class="card-body">
           <h5 class="card-title"><%= item.title %>  <%= number_to_currency(item.price) %></h5>
 
