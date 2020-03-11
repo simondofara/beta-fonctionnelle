@@ -1,4 +1,5 @@
 class Item < ApplicationRecord
+  
   before_destroy :not_referenced_by_any_line_item
 
   validates :title, presence: true

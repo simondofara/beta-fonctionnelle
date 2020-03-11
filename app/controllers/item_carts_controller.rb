@@ -6,7 +6,7 @@ class ItemCartsController < ApplicationController
 
 
   def index
-    @item_carts = LineItem.all
+    @item_carts = ItemCart.all
   end
 
 
@@ -15,7 +15,7 @@ class ItemCartsController < ApplicationController
 
 
   def new
-    @item_cart = LineItem.new
+    @item_cart = ItemCart.new
   end
 
 
@@ -64,7 +64,7 @@ class ItemCartsController < ApplicationController
   private
 
     def set_item_cart
-      @item_cart = LineItem.find(params[:id])
+      @item_cart = ItemCart.find(params[:id])
     end
 
 
