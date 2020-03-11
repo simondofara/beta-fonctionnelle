@@ -37,10 +37,8 @@ ActiveRecord::Schema.define(version: 2020_03_10_143152) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "item_carts", force: :cascade do |t|
@@ -50,9 +48,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_143152) do
     t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity", default: 1
-    t.index ["cart_id"], name: "index_item_carts_on_cart_id"
-    t.index ["item_id"], name: "index_item_carts_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|
@@ -63,27 +58,6 @@ ActiveRecord::Schema.define(version: 2020_03_10_143152) do
     t.datetime "updated_at", null: false
   end
 
-<<<<<<< HEAD
-  create_table "line_items", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "product_id"
-    t.integer "cart_id"
-    t.integer "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.text "address"
-    t.string "pay_method"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-=======
->>>>>>> a9d7a14348e9e2b9f0fb6514aeaa861c047b8f94
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
