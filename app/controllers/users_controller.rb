@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-
+    @user = User.find(params[:id])
   end
 
   def new
@@ -14,10 +14,11 @@ class UsersController < ApplicationController
       log_in(@user)
     else
       render new_user_path
+    end
   end
 
   def edit
-
+    
   end
 
   def update
