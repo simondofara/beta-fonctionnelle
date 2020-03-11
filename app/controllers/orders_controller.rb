@@ -13,28 +13,20 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @new_order = Order.create(user_id: current_user.id)
-    @order = last_order
-
-    @items = all_items
-    @items.each do |item|
-      JoinOrderItem.create(order_id: @order.id, item_id: item.id)
+    @order = Order.new(order_params)
+    @current_cart.item.each do |item|
+      @order.item << item
+      item.cart_id = nil
     end
-
-    if @new_order.save
-      destroy
-      redirect_to root_path
-    end
-  end
-
-  def destroy
-    cu = Cart.find_by(user_id: current_user.id)
-    JoinCartItem.where(cart_id: cu.id).destroy_all
+    @order.save
+    Cart.destroy(session[:cart_id])
+    session[:cart_id] = nil
+    redirect_to root_path
   end
 
 private
-  def last_order
-    Order.last
+  def order_params
+    params.require(:order).permit(:email, :address,)
   end
 
 end

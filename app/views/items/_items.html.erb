@@ -1,3 +1,4 @@
+
 <div class = container >
 
 
@@ -12,13 +13,13 @@
           <h5 class="card-title"><%= item.title %>  <%= number_to_currency(item.price) %></h5>
 
           <p class="card-text"><%= item.description %></p>
-
           <%= link_to "<button class = 'btn btn-primary'>Voir la photo</button>".html_safe, item_path(item.id)%>
 
-          
+          <%= button_to "Add #{item.title} to cart", item_carts_path(:item_id => item.id) %>
         </div>
       </div>
     <% end %>
 
   </div>
+  
 </div>

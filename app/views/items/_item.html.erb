@@ -20,7 +20,6 @@
           <p><%= @item.description%></p>
           <%= button_to 'Ajouter au panier', item_carts_path(item_id: @item), class: 'btn btn-primary' %>
         </div>
-          <%= render 'add_to_cart', item: @item, user: @user %>
       </div>
     </div>
   </div>
