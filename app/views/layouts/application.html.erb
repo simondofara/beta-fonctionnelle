@@ -21,11 +21,12 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to "<span class ='nav-link'>Se déconnecter</span>".html_safe, destroy_user_session_path, method: :delete %>
+            <%= link_to "<span class ='nav-link'>Voir le profil</span>".html_safe, user_path(current_user.id) %>
           </li>
           <li class="nav-item">
-            <%= link_to "<span class ='nav-link'>Edit mail/ Change password</span>".html_safe, edit_user_registration_path %>
+            <%= link_to "<span class ='nav-link'>Se déconnecter</span>".html_safe, destroy_user_session_path, method: :delete %>
           </li>
+          
         <% else %>  
           <li class="nav-item">
             <%= link_to "<span class ='nav-link'>Se connecter</span>".html_safe, new_user_session_path %>
