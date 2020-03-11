@@ -5,9 +5,9 @@ class ItemCartsController < ApplicationController
     chosen_item = Item.find(params[:item_id])
     current_cart = @current_cart
 
-  # If cart already has this product then find the relevant item_cart and iterate quantity otherwise create a new item_cart for this product
+  # If cart already has this item then find the relevant item_cart and iterate quantity otherwise create a new item_cart for this item
     if current_cart.items.include?(chosen_item)
-      # Find the item_cart with the chosen_product
+      # Find the item_cart with the chosen_item
       @item_cart = current_cart.item_carts.find_by(:item_id => chosen_item)
       # Iterate the item_cart's quantity by one
       @item_cart.quantity += 1

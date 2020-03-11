@@ -1,3 +1,6 @@
 class Order < ApplicationRecord
-  has_many :item_carts, dependent: :destroy
+  has_many :join_order_items
+  has_many :items, through: :join_order_items
+
+  belongs_to :user
 end

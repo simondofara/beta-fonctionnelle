@@ -17,8 +17,8 @@
         </div>
         <div class="lead">
           <p><%= @item.description%></p>
-          <button class = "btn btn-primary">Ajouter au panier</button>
         </div>
+          <%= render 'add_to_cart', item: @item, user: @user %>
       </div>
     </div>
   </div>

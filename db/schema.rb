@@ -10,44 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_10_124753) do
+ActiveRecord::Schema.define(version: 2020_03_10_223009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "item_carts", force: :cascade do |t|
-    t.integer "quantity", default: 1
-    t.integer "item_id"
-    t.integer "cart_id"
-    t.integer "order_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "items", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.decimal "price", precision: 5, scale: 2
+    t.decimal "price"
     t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.text "address"
-    t.string "pay_method"
+  create_table "join_cart_items", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "items_id"
+    t.bigint "carts_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["carts_id"], name: "index_join_cart_items_on_carts_id"
+    t.index ["items_id"], name: "index_join_cart_items_on_items_id"
+  end
+
+  create_table "join_order_items", force: :cascade do |t|
+    t.bigint "order_id"
+    t.bigint "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["item_id"], name: "index_join_order_items_on_item_id"
+    t.index ["order_id"], name: "index_join_order_items_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
