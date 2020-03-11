@@ -37,20 +37,17 @@ ActiveRecord::Schema.define(version: 2020_03_10_143152) do
   end
 
   create_table "carts", force: :cascade do |t|
-    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "item_carts", force: :cascade do |t|
-    t.bigint "cart_id"
-    t.bigint "item_id"
+    t.integer "quantity", default: 1
+    t.integer "item_id"
+    t.integer "cart_id"
+    t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "quantity", default: 1
-    t.index ["cart_id"], name: "index_item_carts_on_cart_id"
-    t.index ["item_id"], name: "index_item_carts_on_item_id"
   end
 
   create_table "items", force: :cascade do |t|

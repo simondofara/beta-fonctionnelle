@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class ItemCartsControllerTest < ActionDispatch::IntegrationTest
+<<<<<<< HEAD
+  # test "the truth" do
+  #   assert true
+  # end
+=======
   test "should get index" do
     get item_carts_index_url
     assert_response :success
@@ -26,4 +31,5 @@ class ItemCartsControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+>>>>>>> c3ce46a0b901f41c2e591ab270c9136d0ebc7323
 end
