@@ -1,11 +1,27 @@
 <div class = "container ">
+
+  <div class="row">
+
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+
+      
+
+    <div class="container" style="margin:10px">
+
   <h1> Bienvenue <%= @user.email%></h1>
   <hr>
-  <h2> Commandes pasées </h2>
+  <h2> Commandes passées </h2>
   <p> Ajouter boucle permettant de voir toutes les commandes en cliquant le lien associé à chacune </p>
   <hr>
   <h2>Informations personnnelles</h2>
   <p> Nom : <%= @user.name%> </p>
   <p> e-mail : <%= @user.email%></p>
   <%= link_to "<button class ='btn btn-warning'>Modifier mes informations personnelles</button>".html_safe, edit_user_registration_path %>
+
+</div>
+<br>
+
+
+
 </div>

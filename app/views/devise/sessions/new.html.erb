@@ -1,8 +1,8 @@
-
+<div class="container">
 <div class = "row">
     <div class = "col-md-6 offset-md-3">
     <br><br><br>
-    
+
 <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form-signin mt-3" }) do |f| %>
   <h2 class="h3 mb-3 font-weight-normal text-center">Connection</h2>
   <div class="form-group">
@@ -22,9 +22,10 @@
 
 
   <div class="form-actions">
-    <%= f.button :submit, "Se connecter", class: "btn btn-lg btn-primary btn-block"  %>
+    <%= f.button :submit, "Se connecter", class: "btn btn-lg btn-success btn-block"  %>
   </div>
 <% end %>
+<hr />
 
 <%= render "devise/shared/links" %>
 </div>

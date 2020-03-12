@@ -25,6 +25,7 @@ class OrdersController < ApplicationController
     redirect_to order_path(@order.id)
   end
 
+
 private
   def order_params
     params.require(:order).permit( :address,)
