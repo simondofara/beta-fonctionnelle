@@ -15,7 +15,7 @@
           <p class="card-text"><%= item.description %></p>
           <%= link_to "<button class = 'btn btn-primary'>Voir la photo</button>".html_safe, item_path(item.id)%>
 
-          <%= button_to "Add #{item.title} to cart", item_carts_path(:item_id => item.id), class: "btn btn-success mt-3" %>
+          <%= button_to "Add #{item.title} to cart", item_carts_path(:item_id => item.id), class: "btn btn-info mt-3" %>
         </div>
       </div>
     <% end %>
