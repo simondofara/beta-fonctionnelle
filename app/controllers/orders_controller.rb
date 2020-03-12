@@ -20,7 +20,7 @@ class OrdersController < ApplicationController
     puts @order
     puts @order.cart
     puts "@@@@@@@@@@@@@@"
-    
+
     @order.save
     redirect_to order_path(@order.id)
   end

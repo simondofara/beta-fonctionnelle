@@ -20,11 +20,10 @@
         <td><%= item_cart.quantity%></td>
         <td><%= number_to_currency(item_cart.total_price) %></td>
         <th><%= link_to "Voir ".html_safe, item_path(item_cart.item.id)%></th>
-        <td><%= link_to "<i class='fas fa-trash'></i>".html_safe, item_cart, method: :delete, data: { confirm: "Are you sure? " }, style: "color: red; float: right" %></td>
+        <td><%= link_to "<i class='fas fa-trash' style='color:#A52A2A'></i>".html_safe, item_cart, method: :delete, data: { confirm: "Are you sure? " }, style: "color: red; float: right" %></td>
       </tr>
     <% end %>
   </tbody>
   </table>
-  
- </div>
 
+ </div>

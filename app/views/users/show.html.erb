@@ -5,7 +5,7 @@
   <p> Ajouter boucle permettant de voir toutes les commandes en cliquant le lien associé à chacune </p>
   <hr>
   <h2>Informations personnnelles</h2>
-  <p> email : <%= @user.email%></p>
-  <p> nom : <%= @user.name%> </p>
-  <%= link_to "<button class ='btn btn-primary'>Modifier mes informations personnelles</button>".html_safe, edit_user_registration_path %>
+  <p> Nom : <%= @user.name%> </p>
+  <p> e-mail : <%= @user.email%></p>
+  <%= link_to "<button class ='btn btn-warning'>Modifier mes informations personnelles</button>".html_safe, edit_user_registration_path %>
 </div>
