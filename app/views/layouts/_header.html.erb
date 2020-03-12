@@ -8,13 +8,20 @@
         <ul class="navbar-nav ml-auto">
 
         <% if user_signed_in? %>
-          <li class="nav-item" style="margin=30px">
-            <%= link_to cart_path(@cart) do %>
-              <span class>
-                <i class ='fas fa-shopping-cart fa-2x' style = 'color:white'></i>
-              </span>
-              <% end %>
-          </li>
+
+          <% if total_cart_items %>
+            <li class="nav-item" style="margin=30px">
+              <%= link_to cart_path(@cart), class:"navbar-item button is-warning" do %>
+                <span class>
+                  <i class ='fas fa-shopping-cart fa-2x' style = 'color:white'></i>
+                </span>
+                <span style = "color:white">
+                  <%= cart_count_over_one %>
+                </span>
+                <% end %>
+            </li>
+          <% end %>
+
 
           <li class="nav-item">
             <%= link_to "<span class ='nav-link'>Voir le profil</span>".html_safe, user_path(current_user.id) %>
