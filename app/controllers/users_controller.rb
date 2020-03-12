@@ -11,8 +11,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+
     if @user.save
+      user_cart = Cart.create
+      @cart.update(user_id: current_user.id)
+      @user.cart = curent_cart
       log_in(@user)
+
     else
       render new_user_path
     end

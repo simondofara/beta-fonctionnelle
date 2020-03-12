@@ -10,6 +10,7 @@ class CartsController < ApplicationController
 
 
   def show
+    @cart = Cart.find(params[:id])
   end
 
 
@@ -23,10 +24,13 @@ class CartsController < ApplicationController
 
 
   def create
-    @cart = Cart.new(cart_params)
-
+    @cart = Cart.new(user: current_user)
+    puts @cart
     respond_to do |format|
       if @cart.save
+
+        puts current_user
+        puts current_user.cart
         format.html { redirect_to @cart, notice: 'Cart was successfully created.' }
         format.json { render :show, status: :created, location: @cart }
       else

@@ -14,14 +14,23 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
     <div class="container">
     <%= link_to "<span class = 'navbar-brand'> Cat's Eyes</span>".html_safe, root_path%>
-      <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="navbarResponsive" style="">
+
+      <div class="navbar-collapse collapse" id="navbarResponsive" style="padding:20px">
         <ul class="navbar-nav ml-auto">
+
         <% if user_signed_in? %>
+
+
+          <li class="nav-item" style="padding-right:50px">
+            <%= link_to cart_path(@cart) do %>
+              <span class>
+                <i class ='fas fa-shopping-cart fa-2x' style = 'color:white'></i>
+              </span>
+              <% end %>
+          </li>
+
           <li class="nav-item">
-            <%= link_to "<span class ='nav-link'>Voir le profil</span>".html_safe, user_path(current_user.id) %>
+            <%= link_to "<span class ='nav-link'>Votre profil</span>".html_safe, user_path(current_user.id) %>
           </li>
           <li class="nav-item">
             <%= link_to "<span class ='nav-link'>Se déconnecter</span>".html_safe, destroy_user_session_path, method: :delete %>
