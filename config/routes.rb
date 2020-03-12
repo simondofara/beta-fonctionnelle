@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :charges
   resources :item_carts
   resources :carts
   resources :items
