@@ -1,3 +1,17 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.jumbotron
+{
+  background: url("https://images.unsplash.com/photo-1545155592-244d23b0b169?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60") no-repeat center;
+  color: aliceblue;
+  text-align: center;
+  -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  height: 250px;
+  margin-top: -60px;
+  
+}
