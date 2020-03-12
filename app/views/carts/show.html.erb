@@ -7,14 +7,36 @@
      <h4 class="title is-4">
        <span class="f5 has-text-grey">Total:</span> <%= number_to_currency(@cart.total_price) %>
      </h4>
-   </div>
+  </div>
+
  <div class="columns">
-   <div class="column">
+
+
+    <div>
+      <%= link_to "Passer la commande", new_order_path, method: :get, class: "btn btn-success" %><br>
+    </div>
+
+    <br>
+
+
+    <%= link_to items_path do %>
+      <div style ="display:flex; flex-direction:row;">
+        <div>
+          <i class="far fa-caret-square-left fa-3x"></i>
+        </div>
+        <div style = "padding:10px">
+          <p>Retourner aux produits</p>
+        </div>
+      </div>
+    <% end %>
+
+
+      <br>
+
+    <div>
      <%= button_to 'Vider le panier', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-primary" %>
-   </div>
- </div>
+    </div>
+
+  </div>
+
 </section>
-<div class="keep-shopping pv1 mt4 has-text-right">
- <%= link_to 'Retourner aux produits', items_path, class: 'button is-warning' %>
-</div>
-</div>
